@@ -1,0 +1,6 @@
+services:
+	authenticator: DatabaseAuthenticator
+	authorizator: \Security\Authorizator
+
+	routerFactory: RouterFactory
+	router: @routerFactory::createRouter
