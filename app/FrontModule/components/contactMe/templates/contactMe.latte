@@ -17,10 +17,12 @@
 							{input submit class=>"comment-submit small button"}
 						</div>
 					</div>
+					{input email}
 				{/form}
-			</div>
-			<div class="result">
-				<span class="flashes"></span>
+				<div class="clearfix"></div>
+				<div class="result">
+					<span class="flash-message" n:foreach="$flashes as $flash">{$flash->message}</span>
+				</div>
 			</div>
 		</div>
 	</div>
