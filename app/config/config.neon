@@ -30,6 +30,7 @@ common:
 
 		session:
 			expiration: 14 days
+			autoStart: true
 
 
 production < common:
