@@ -7,16 +7,19 @@
 	background: #a61d25;
 }
 
+.home-parallax {
+	background-color: #938c86;
+}
+
 .twitter-feed-icon i,
 .testimonial-icon i,
 .home-gradient,
-.home-parallax,
-#project-navigation ul li#prevProject a:hover, 
+#project-navigation ul li#prevProject a:hover,
 #project-navigation ul li#nextProject a:hover,
 #project-navigation ul li a:hover,
 #closeProject a:hover,
 .portfolio .portfolio-overlay,
-.pagination a.previous:hover, 
+.pagination a.previous:hover,
 .pagination a.next:hover,
 .rnr-icon-middle:hover,
 .service-box:hover,
@@ -24,7 +27,7 @@
 .skillbar .skill-percentage,
 .flex-control-nav li a:hover,
 .flex-control-nav li a.flex-active,
-.testimonial-slider .flex-direction-nav li a, 
+.testimonial-slider .flex-direction-nav li a,
 .twitter-slider .flex-direction-nav li a,
 .color-block,
 .home1 .slabtextdone .slabtext.second-child,
@@ -62,12 +65,12 @@
 
 a,
 .highlight,
-nav.light .main-menu a:hover, 
+nav.light .main-menu a:hover,
 nav.dark .main-menu a:hover,
-nav.light .main-menu a.active, 
+nav.light .main-menu a.active,
 nav.dark .main-menu a.active,
 .parallax .quote i,
-#filters ul li a:hover h3, 
+#filters ul li a:hover h3,
 #filters ul li a.active h3,
 .post-title a:hover,
 .post-tags li a:hover,
@@ -102,7 +105,7 @@ blockquote p,
 	background: -webkit-radial-gradient(center center, circle cover, #a61d25 0%, #8a0910 100%);
 	background: -o-radial-gradient(center center, circle cover, #a61d25 0%, #8a0910 100%);
 	background: -ms-radial-gradient(center center, circle cover, #a61d25 0%, #8a0910 100%);
-	background: radial-gradient(center center, circle cover, #a61d25 0%, #8a0910 100%);	
+	background: radial-gradient(center center, circle cover, #a61d25 0%, #8a0910 100%);
 }
 
 

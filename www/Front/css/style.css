@@ -385,10 +385,10 @@ nav.light .main-menu a.active, nav.dark .main-menu a.active {
 	line-height: 1;
 }
 .home-parallax .home-slide-content {
-	padding: 55px 10px 50px;	
+	padding: 55px 10px 50px;
 	background: rgba(0, 0, 0, 0.3);
 	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);	
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
 	color: #ffffff;
 }
 .home-gradient .home-slide-content {
@@ -470,7 +470,7 @@ nav.light .main-menu a.active, nav.dark .main-menu a.active {
 	padding: 10px 10px 0;
 	background: rgba(255, 255, 255, 0.63);
 	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4Cffffff, endColorstr=#4Cffffff);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4Cffffff, endColorstr=#4Cffffff);	
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4Cffffff, endColorstr=#4Cffffff);
 	box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 0.32);
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -586,7 +586,7 @@ p.quote {
 /*--------------------------------------------------------
 /* PARALLAX SECTION 2
 --------------------------------------------------------*/
-	
+
 .bg2 {
 	background-image: url(../images/parallax/parallax2.jpg);
 }
@@ -600,7 +600,7 @@ p.quote {
 }
 #twitter-feed li {
 	margin-bottom: 20px;
-	
+
 }
 .twitter-feed-icon i {
 	font-size: 22px;
@@ -802,7 +802,7 @@ p.quote {
 }
 
 
-/*======== HOME SECTION ========*/	
+/*======== HOME SECTION ========*/
 #home {
 	position: relative;
 	overflow: hidden;
@@ -825,7 +825,7 @@ p.quote {
 	background-position: 100% top;
 	background-color: #FFD600;
 }
-/*======== HOME LOGO ========*/	
+/*======== HOME LOGO ========*/
 #home h1 {
 	font-size: 60px;
 }
@@ -1231,7 +1231,7 @@ p.quote {
 }
 /*======== BLOG PAGE ========*/
 
-	
+
 .post {
 	margin-bottom: 100px;
 }
@@ -1511,7 +1511,7 @@ p.quote {
 	color: black;
 	background: rgba(255, 255, 255, 0.50);
 	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4Cffffff, endColorstr=#4Cffffff);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4Cffffff, endColorstr=#4Cffffff);	
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4Cffffff, endColorstr=#4Cffffff);
 }
 .copyright {
 	width: 100%;
@@ -1569,7 +1569,7 @@ p.quote {
 	border-radius: 2px;
 	margin-bottom: 10px;
 }
-}
+
 #contact-input input:last-child {
 	margin-right: 0;
 }
