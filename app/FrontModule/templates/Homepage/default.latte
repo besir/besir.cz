@@ -1,4 +1,192 @@
-{* This is the welcome page, you can delete it *}
 
 {block content}
+
+	{* START HOME SECTION *}
+    <div id="home" class="home-parallax">
+      <div class="home-text-wrapper">
+          <div class="home-logo-text">
+            <a href="#home">Petr Horáček</a>
+          </div>
+           <div id="home-slider" class="flexslider">
+              <ul class="slides styled-list">
+                <li class="home-slide"><p class="home-slide-content">php<span class="highlight">programátor</span></p></li>
+                <li class="home-slide"><p class="home-slide-content">casperjs<span class="highlight">tester</span></p></li>
+                <li class="home-slide"><p class="home-slide-content"><span class="highlight">RedBull</span>maniak</p></li>
+              </ul>
+           </div>{* END FLEXSLIDER *}
+        </div>{* END HOME TEXT WRAPPER *}
+     </div>{* END HOME SECTION *}
+
+    {* START NAVIGATION *}
+    <nav class="light">
+      {* START CONTAINER *}
+      <div class="container clearfix">
+          <div class="four columns">
+              {* START LOGO *}
+              <div class="logo large">
+               <a href="#home"><img src="/Front/images/logo.png" title="Petr Besir Horáček" alt="Logo"/></a>
+              </div>
+              {* END LOGO *}
+          </div>{* END FOUR COLUMNS *}
+
+          <div class="twelve columns">
+              {* START NAVIGATION MENU ITEMS *}
+              <ul class="main-menu large" id="nav">
+                  <li><a href="#home">Home</a></li>
+                  <li><a href="#about">O mně</a></li>
+                  {*<li><a href="#team">Team</a></li>*}
+                  {*<li><a href="#services">Služby</a></li>*}
+                  {*<li><a href="#portfolio">Portfolio</a></li>*}
+                  {*<li><a href="shortcodes.html">Shortcodes</a></li>*}
+                  {*<li><a href="blog.html">Blog</a></li>*}
+                  <li><a href="#contact">Kontakt</a></li>
+              </ul>
+              {* END NAVIGATION MENU ITEMS *}
+          </div>{* END TWELVE COLUMNS *}
+      </div>{* END CONTAINER *}
+    </nav>
+    {* END NAVIGATION *}
+
+    {* START ABOUT US SECTION *}
+    <div id="about" class="page">
+
+      <div class="container">
+        <div class="row">
+          <div class="sixteen columns">
+            {* START TITLE *}
+            <div class="title">
+              <h1>O mně</h1>
+              <div class="subtitle">
+                <p>Velmi rád Vám pomohu při <span class="highlight">návrhu</span> a <span class="highlight">realizaci</span>, nebo <span class="highlight">optimalizaci</span> Vašeho projektu.</p>
+              </div>{* END SUBTITLE *}
+            </div>{* END TITLE *}
+          </div>{* END SIXTEEN COLUMNS *}
+        </div>{* END ROW *}
+      </div>{* END CONTAINER *}
+
+      <div class="fullwidth grey">
+        <div class="container">
+          <div class="fancy-header2">
+            <h2>Co dostanete?</h2>
+            <h2 class="highlight">Výkoné a moderní webové stránky, které vypadají fantasticky!</h2>
+          </div>
+
+          <div class="row">
+            <div class="one-third column">
+              <div class="service-features">
+                <div class="img-container">
+                  <img src="{$basePath}/Front/images/icons/icons/paperplane.png" alt="Inovace">
+                </div>
+                <h3>Inovace</h3>
+                <p>Mé projekty jsou založeny na moderním, rychlém a bezpečném frameworku Nette.</p>
+              </div>
+            </div>{* END ONE THIRD COLUMN *}
+
+            <div class="one-third column">
+              <div class="service-features">
+                <div class="img-container">
+                  <img src="{$basePath}/Front/images/icons/icons/lab.png" alt="Experimenty">
+                </div>
+                <h3>Experimenty</h3>
+                <p>....</p>
+              </div>
+            </div>{* END ONE THIRD COLUMNS *}
+
+            <div class="one-third column">
+              <div class="service-features">
+                <div class="img-container">
+                  <img src="{$basePath}/Front/images/icons/icons/like.png" alt="Testování">
+                </div>
+                <h3>Testování</h3>
+                <p>Potřebujete aplikaci bez výpadků? Není nic lepšího, než použít funkční testy např. v CasperJS.</p>
+              </div>
+            </div>{* END ONE THIRD COLUMNS *}
+          </div>{* END ROW *}
+        </div>{* END CONTAINER *}
+      </div>
+      <div class="container">
+        <div class="row">
+           <div class="sixteen columns">
+             <h2>V číslech...</h2>
+           </div>{* END SIXTEEN COLUMNS *}
+
+           <div class="four columns">
+             <div class="milestone-counter" data-perc="458">
+               <span class="milestone-count highlight"></span>
+               <h3 class="milestone-details">Vypitých RedBullů</h3>
+             </div>
+           </div>{* END FOUR COLUMNS *}
+
+           <div class="four columns">
+             <div class="milestone-counter" data-perc="27">
+               <span class="milestone-count highlight"></span>
+               <h3 class="milestone-details">Klientů</h3>
+             </div>
+           </div>{* END FOUR COLUMNS *}
+
+           <div class="four columns">
+             <div class="milestone-counter" data-perc="53">
+               <span class="milestone-count highlight"></span>
+               <h3 class="milestone-details">Hotových projektů</h3>
+             </div>
+           </div>{* END FOUR COLUMNS *}
+
+           <div class="four columns">
+             <div class="milestone-counter" data-perc="0">
+               <span class="milestone-count highlight"></span>
+               <h3 class="milestone-details">článků</h3>
+             </div>
+           </div>{* END FOUR COLUMNS *}
+         </div>{* END ROW *}
+      </div>{* END CONTAINER *}
+    </div>
+    {* End ABOUT US SECTION *}
+
+    {* START PARALLAX SECTION *}
+    <div id="parallax1" class="parallax">
+      <div class="bg1 parallax-bg"></div>{* END PARALLAX BACKGROUND *}
+      <div class="overlay"></div>{* END PATTERN OVERLAY *}
+      <div class="container clearfix">
+        <div class="parallax-content">
+          <p class="quote"><span class="icon-quote-left"></span>Design není jen to, jak daná věc vypadá, ale taky, jak funguje.<span class="icon-quote-right"></span></p>
+          <div class="quote-author highlight">-- Steve Jobs --</div>
+        </div>{* END PARALLAX CONTENT *}
+      </div>{* END CONTAINER *}
+    </div>{* END PARALLAX SECTION *}
+
+    <div id="team" class="page">
+      <div class="container clearfix">
+        <div class="sixteen columns">
+          <h3>Několik mých klientů se kterými jsem spolupracoval</h3>
+          <div class="client-logos">
+            <a href="#" title="Ulož.to" class="clients"><img src="{$basePath}/Front/images/clients/ulozto.png" alt="Uloz.to"></a>
+            <a href="#" title="Social Bakers" class="clients"><img src="{$basePath}/Front/images/clients/socialbakers.png" alt="Social Bakers"></a>
+            <a href="#" title="Effectix.com s.r.o." class="clients"><img src="{$basePath}/Front/images/clients/effectix.png" alt="Effectix.com s.r.o."></a>
+          </div><!-- END CLIENTS LIST -->
+          <p></p>
+        </div><!-- END SIXTEEN COLUMNS -->
+      </div>
+    </div>
+    <!-- END TEAM SECTION -->
+
+	<!-- START CONTACT SECTION -->
+    <div id="contact" class="page">
+      <div class="container">
+        <div class="row">
+          <div class="sixteen columns">
+            <!-- START TITLE -->
+            <div class="title">
+            <h2>Kontaktujte mně</h2>
+              <div class="subtitle">
+              <p>Opravdu rád bych s vámi spolupracoval na vašem projektu. Napište mi email a ozvu se vám hned jak jen to bude možné.</p>
+              </div><!-- END SUBTITLE -->
+            </div><!-- END TITLE -->
+          </div><!-- END SIXTEEN COLUMNS -->
+        </div><!-- END ROW -->
+      </div><!-- END CONTAINER -->
+	</div>
+	{control contactMe}
+
+
+
 {/block}
