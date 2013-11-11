@@ -16,4 +16,9 @@ class HomepagePresenter extends \FrontModule\FrontPresenter
 	{
 	}
 
+	public function createComponentContactMe($name)
+	{
+		return $this->getContext()->createContactMe();
+	}
+
 }

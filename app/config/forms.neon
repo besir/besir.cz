@@ -1,1 +1,3 @@
-services:
+factories:
+	form:
+		class: \Nette\Application\UI\Form

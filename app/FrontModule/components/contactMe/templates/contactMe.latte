@@ -1,0 +1,27 @@
+{block content}
+<div class="container clearfix">
+	<div class="sixteen columns">
+		<div class="contact-box">
+			<div id="contact-form">
+				{form contactForm}
+					<div id="contact-input">
+						{input name}
+						{input mailaddress}
+						{input subject}
+					</div>
+					<div id ="contact-textarea">
+						{input message}
+					</div>
+					<div id="contact-submit">
+						<div>
+							{input submit class=>"comment-submit small button"}
+						</div>
+					</div>
+				{/form}
+			</div>
+			<div class="result">
+				<span class="flashes"></span>
+			</div>
+		</div>
+	</div>
+</div>
