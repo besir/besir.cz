@@ -820,7 +820,7 @@ p.quote {
 	background: radial-gradient(center center, circle cover, #FFD600 0%, #E2BE01 100%);
 }
 .home-parallax {
-	background: url(../images/parallax/parallax-top.jpg) fixed;
+	background: url(../images/parallax/parallax-top.jpg) fixed no-repeat;
 	background-size: 120% auto;
 	background-position: 100% top;
 	background-color: #FFD600;
