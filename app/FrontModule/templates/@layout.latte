@@ -44,11 +44,7 @@
 
   {* START PAGE WRAP *}
   <div class="page-wrap">
-    
-
 	{include #content}
-
-
       {* START COPYRIGHT SECTION *}
       <div class="copyright">
         <div class="container clearfix">
@@ -73,14 +69,13 @@
                 <a href="http://pinterest.com/besir/" target="_blank" data-original-title="Forrst">Pinterest</a>
               </div>
             </div>
-            <p>&copy; 2013 Všechna práva vyhrazena.</p>
+            <p class="rights">&copy; 2013 Všechna práva vyhrazena.</p>
           </div> {* END SIXTEEN COLUMNS *}
         </div>{* END CONTAINER *}
       </div>{* END COPYRIGHT SECTION *}
     </div>
         <script> document.body.className+=' js' </script>
         <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-
 
         {block scripts}
         <script src="{$basePath}/Front/js/jquery.js"></script>
