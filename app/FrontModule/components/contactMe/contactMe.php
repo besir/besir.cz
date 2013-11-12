@@ -8,19 +8,32 @@ namespace FrontModule\control;
  */
 class ContactMeControl extends \Nette\Application\UI\Control
 {
-	/**
-	 * @author Petr Besir Horacek <sirbesir@gmail.com>
-	 * @var \Nette\Application\UI\Form
-	 */
+	/** @var \Nette\Application\UI\Form */
 	private $form;
+
+	/** @var bool */
+	private $toGlobalFlashes = FALSE;
+
+	/** @var bool */
+	private $saveToDB = FALSE;
+
+	/** @var bool */
+	private $sendEmail = FALSE;
+
+	/** @var \FrontModule\component\model\service\ContactMeControl */
+	private $model;
+
+	/** @var string */
+	private $redirectTo = 'this';
 
 	/**
 	 * @author Petr Besir Horacek <sirbesir@gmail.com>
 	 * @param \Nette\Application\UI\Form $form
 	 */
-	public function __construct(\Nette\Application\UI\Form $form)
+	public function __construct(\Nette\Application\UI\Form $form, \FrontModule\component\model\service\ContactMeControl $model)
 	{
 		$this->setForm($form);
+		$this->injectContactMeControlService($model);
 	}
 
 	/**
@@ -43,13 +56,15 @@ class ContactMeControl extends \Nette\Application\UI\Control
 	{
 		$form = $this->getForm();
 
-		$form->addProtection('CSRF Expired');
+		$form->addProtection('Vypršel ochranný klíč, odešlete prosím formulář znovu.');
 
 		$form->addText('name', 'Jméno')
 				->setAttribute('placeholder', 'Celé jméno')
+				->setAttribute('type', 'name')
 				->setRequired('Zadejte prosím své celé jméno.');
 		$form->addText('mailaddress', 'Email')
 				->setAttribute('placeholder', 'E-mail')
+				->setAttribute('type', 'email')
 				->setRequired('Zadejte prosím svůj e-mail.')
 				->addRule(\Nette\Forms\Form::EMAIL, 'Zadejte prosím svůj e-mail ve správném formátu.');
 		$form->addText('subject', 'Předmět')
@@ -60,7 +75,8 @@ class ContactMeControl extends \Nette\Application\UI\Control
 				->setRequired('Napište mi prosím nějakou zprávu.')
 				->addRule(\Nette\Forms\Form::MIN_LENGTH, 'Napište mi prosím delší vzkaz abych měl co číst :-) Minimální délka vzkazu je %d znaků.', 20);
 		$form->addText('email', 'E-mail')
-				->setAttribute('style', 'display:none;');
+				->setAttribute('style', 'display:none;')
+				->setAttribute('type', 'email');
 		$form->addSubmit('submit', 'Odeslat dotaz');
 
 		$form->onSuccess[] = array($this, 'processForm');
@@ -73,17 +89,33 @@ class ContactMeControl extends \Nette\Application\UI\Control
 	/**
 	 * @author Petr Besir Horacek <sirbesir@gmail.com>
 	 * @param \Nette\Application\UI\Form $form
+	 * @return bool
 	 */
 	public function processForm(\Nette\Application\UI\Form $form)
 	{
 		$values = $form->getValues();
-
 		$values = $this->prepareData($values);
 
-		if ($this->storeMessage($values) && $this->sendEmail($values))
+		$stored = $sended = TRUE;
+
+		if ($this->getSaveToDB())
+		{
+			$stored = $this->storeMessage($values);
+		}
+		if ($this->getSendEmail())
+		{
+			$sended = $this->sendEmail($values);
+		}
+
+		if ($stored && $sended)
 		{
 			$this->flashMessage('Zpráva byla úspěšně odeslána, děkuji.', 'success');
+			$this->redirect($this->getRedirectTo());
+			return TRUE;
 		}
+
+		$this->flashMessage('Při odesílání zprávy došlo k neznámé chybě. Zkuste to prosím později.', 'error');
+		return FALSE;
 	}
 
 	/**
@@ -117,7 +149,7 @@ class ContactMeControl extends \Nette\Application\UI\Control
 	 * @param \Nette\ArrayHash $values
 	 * @return \Nette\ArrayHash
 	 */
-	public function prepareData($values)
+	private function prepareData($values)
 	{
 		$values['email'] = $values['mailaddress'];
 		unset($values['mailaddress']);
@@ -127,11 +159,41 @@ class ContactMeControl extends \Nette\Application\UI\Control
 
 	/**
 	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @param \Nette\Application\UI\Form $form
+	 * @return boolean
+	 */
+	public function onFormError(\Nette\Application\UI\Form $form)
+	{
+		$errors = $form->getErrors();
+		foreach ($errors as $error)
+		{
+			if ($this->getToGlobalFlashes())
+			{
+				$this->getPresenter()->flashMessage($error, 'error');
+			}
+			else
+			{
+				$this->flashMessage('Při odesílání zprávy došlo k neznámé chybě. Zkuste to prosím později.', 'error');
+			}
+		}
+		return FALSE;
+	}
+
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
 	 * @param \Nette\ArrayHash $values
 	 */
-	public function storeMessage($values)
+	private function storeMessage($values)
 	{
-		return TRUE;
+		try
+		{
+			$this->getModel()->saveMessage($values);
+			return TRUE;
+		}
+		catch (\Exception $exception)
+		{
+			return FALSE;
+		}
 	}
 
 	/**
@@ -139,22 +201,10 @@ class ContactMeControl extends \Nette\Application\UI\Control
 	 * @param \Nette\ArrayHash $values
 	 * @return boolean
 	 */
-	public function sendEmail($values)
+	private function sendEmail($values)
 	{
 		return TRUE;
 	}
-
-	public function onFormError(\Nette\Application\UI\Form $form)
-	{
-		\Nette\Diagnostics\Debugger::barDump('Pridavam chyby');
-		$errors = $form->getErrors();
-		foreach ($errors as $error)
-		{
-			$this->flashMessage($error, 'error');
-		}
-		return FALSE;
-	}
-
 
 	/**
 	 * @author Petr Besir Horacek <sirbesir@gmail.com>
@@ -167,6 +217,52 @@ class ContactMeControl extends \Nette\Application\UI\Control
 
 	/**
 	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @return bool
+	 */
+	public function getToGlobalFlashes()
+	{
+		return $this->toGlobalFlashes;
+	}
+
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @return bool
+	 */
+	public function getSaveToDB()
+	{
+		return $this->saveToDB;
+	}
+
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @return bool
+	 */
+	public function getSendEmail()
+	{
+		return $this->sendEmail;
+	}
+
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @return \FrontModule\component\model\service\ContactMeControl
+	 */
+	public function getModel()
+	{
+		return $this->model;
+	}
+
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @return string
+	 */
+	public function getRedirectTo()
+	{
+		return $this->redirectTo;
+	}
+
+
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
 	 * @param \Nette\Application\UI\Form $form
 	 */
 	public function setForm(\Nette\Application\UI\Form $form)
@@ -174,5 +270,55 @@ class ContactMeControl extends \Nette\Application\UI\Control
 		$this->form = $form;
 	}
 
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @param bool $toGlobalFlashes
+	 */
+	public function setToGlobalFlashes($toGlobalFlashes)
+	{
+		$this->toGlobalFlashes = $toGlobalFlashes;
+	}
 
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @param bool $saveToDB
+	 */
+	public function setSaveToDB($saveToDB)
+	{
+		$this->saveToDB = $saveToDB;
+	}
+
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @param bool $sendEmail
+	 */
+	public function setSendEmail($sendEmail)
+	{
+		$this->sendEmail = $sendEmail;
+	}
+
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @param string $redirectTo
+	 */
+	public function setRedirectTo($redirectTo)
+	{
+		$this->redirectTo = $redirectTo;
+	}
+
+	// <editor-fold defaultstate="collapsed" desc="Dependency injection">
+	/**
+	 * ContactMeControl Service injection
+	 * @author Petr Besir Horáček <sirbesir@gmail.com>
+	 * @param \FrontModule\component\model\service\ContactMeControl $contactMeDao
+	 */
+	private function injectContactMeControlService(\FrontModule\component\model\service\ContactMeControl $model)
+	{
+		if ($this->model !== NULL)
+		{
+			throw new \Nette\InvalidStateException('ContactMe DAO has already been set');
+		}
+		$this->model = $model;
+	}
+	// </editor-fold>
 }

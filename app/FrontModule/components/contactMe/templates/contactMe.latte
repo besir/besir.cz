@@ -21,7 +21,7 @@
 				{/form}
 				<div class="clearfix"></div>
 				<div class="result">
-					<span class="flash-message" n:foreach="$flashes as $flash">{$flash->message}</span>
+					<span class="flash-message {$flash->type}" n:foreach="$flashes as $flash">{$flash->message}</span>
 				</div>
 			</div>
 		</div>

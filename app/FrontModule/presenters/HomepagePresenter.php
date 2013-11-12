@@ -16,9 +16,15 @@ class HomepagePresenter extends \FrontModule\FrontPresenter
 	{
 	}
 
-	public function createComponentContactMe($name)
+	/**
+	 * @author Petr Besir Horacek <sirbesir@gmail.com>
+	 * @return \FrontModule\control\ContactMeControl
+	 */
+	public function createComponentContactMe()
 	{
-		return $this->getContext()->createContactMe();
+		$contactMe = $this->getContext()->createContactMe();
+		$contactMe->setRedirectTo('this#contact');
+		$contactMe->setSaveToDB(TRUE);
+		return $contactMe;
 	}
-
 }

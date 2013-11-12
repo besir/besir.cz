@@ -3,3 +3,4 @@ factories:
 		class: \FrontModule\control\ContactMeControl
 		arguments:
 			- @form
+			- @ContactMeControlService

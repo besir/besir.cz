@@ -1,3 +1,7 @@
 services:
 	AuthorizatorService:
 		class: \Security\AuthorizatorService
+	ContactMeControlService:
+		class: \FrontModule\component\model\service\ContactMeControl
+		arguments:
+			- @ContactMeControlDao

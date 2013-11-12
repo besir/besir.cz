@@ -1,3 +1,7 @@
 services:
 	AuthorizatorDao:
 		class: \Security\AuthorizatorDao
+	ContactMeControlDao:
+		class: \FrontModule\component\model\dao\ContactMeControl
+		arguments:
+			- @connection
