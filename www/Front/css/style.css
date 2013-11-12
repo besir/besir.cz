@@ -1736,3 +1736,14 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 * + html .title h1 {
   display: inline;
 }
+
+/*-----------------------------------------------------------------------------------*/
+/*	FALSH Messages
+/*-----------------------------------------------------------------------------------*/
+.flash-message {
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	margin: 0px 0px 10px 5px;
+	border-radius: 3px;
+}

@@ -56,7 +56,9 @@
     box-shadow: 0px -3px 0px 0px #a61d25;
 }
 
-
+.rights {
+	color: #fff;
+}
 
 
 
@@ -109,4 +111,18 @@ blockquote p,
 }
 
 
+/*========== F L A S H    M E S S A G E S =============*/
+.flash-message.error {
+	background-color: #a61d25;
+	color: #fff;
+}
 
+.flash-message.success {
+	background-color: #005200;
+	color: #fff;
+}
+
+.flash-message.info {
+	background-color: #eb9c06;
+	color: #000;
+}
