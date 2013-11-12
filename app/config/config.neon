@@ -7,10 +7,18 @@
 common:
 	parameters:
 		database:
-			dsn: 'mysql:host=127.0.0.1;dbname=chat'
-			user: 'root'
-			password: 'root'
-		projetcName: 'Besir.cz'
+#			dsn: 'mysql:host=127.0.0.1;dbname=chat'
+#			user: 'root'
+#			password: 'root'
+#		projetcName: 'Besir.cz'
+			host: 127.0.0.1
+			username: root
+			password: root
+			database: besir
+			lazy: FALSE
+	services:
+		connection:
+			class: DibiConnection(%database%)
 
 	includes:
 		- factories.neon
